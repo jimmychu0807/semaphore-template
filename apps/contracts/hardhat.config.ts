@@ -14,12 +14,16 @@ import "./tasks/deploy"
 dotenvConfig({ path: resolve(__dirname, "../../.env") })
 
 function getNetworks(): NetworksUserConfig {
-    if (!process.env.INFURA_API_KEY || !process.env.ETHEREUM_PRIVATE_KEY) {
+    if ((!process.env.INFURA_API_KEY && !process.env.ALCHEMY_API_KEY) ||
+        !process.env.ETHEREUM_PRIVATE_KEY) {
         return {}
     }
 
     const accounts = [`0x${process.env.ETHEREUM_PRIVATE_KEY}`]
-    const infuraApiKey = process.env.INFURA_API_KEY
+    const [infuraApiKey, alchemyApiKey] = [
+        process.env.INFURA_API_KEY,
+        process.env.ALCHEMY_API_KEY
+    ]
 
     return {
         sepolia: {
@@ -33,7 +37,7 @@ function getNetworks(): NetworksUserConfig {
             accounts
         },
         "optimism-sepolia": {
-            url: `https://optimism-sepolia.infura.io/v3/${infuraApiKey}`,
+            url: "https://opt-sepolia.g.alchemy.com/v2/${alchemyApiKey}",
             chainId: 11155420,
             accounts
         },
