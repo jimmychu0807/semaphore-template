@@ -1,5 +1,4 @@
 name: deploy-web-app
-description: "Deploy next.js project statically to gh-pages"
 
 on:
     push:
@@ -16,7 +15,7 @@ concurrency:
 
 jobs:
     build:
-        run-on: ubuntu-latest
+        runs-on: ubuntu-latest
 
         steps:
             - name: Checkout 🛎️
