@@ -19,7 +19,7 @@ const nextConfig = withPWA({
     },
     basePath: "/semaphore-template",
     output: "export",
-    reactStrictMode: true,
+    reactStrictMode: true
 })
 
 export default nextConfig

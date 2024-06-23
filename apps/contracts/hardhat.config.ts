@@ -14,16 +14,12 @@ import "./tasks/deploy"
 dotenvConfig({ path: resolve(__dirname, "../../.env") })
 
 function getNetworks(): NetworksUserConfig {
-    if ((!process.env.INFURA_API_KEY && !process.env.ALCHEMY_API_KEY) ||
-        !process.env.ETHEREUM_PRIVATE_KEY) {
+    if ((!process.env.INFURA_API_KEY && !process.env.ALCHEMY_API_KEY) || !process.env.ETHEREUM_PRIVATE_KEY) {
         return {}
     }
 
     const accounts = [`0x${process.env.ETHEREUM_PRIVATE_KEY}`]
-    const [infuraApiKey, alchemyApiKey] = [
-        process.env.INFURA_API_KEY,
-        process.env.ALCHEMY_API_KEY
-    ]
+    const [infuraApiKey, alchemyApiKey] = [process.env.INFURA_API_KEY, process.env.ALCHEMY_API_KEY]
 
     return {
         sepolia: {
