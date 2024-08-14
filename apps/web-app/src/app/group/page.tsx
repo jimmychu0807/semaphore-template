@@ -112,7 +112,7 @@ export default function GroupsPage() {
                     Semaphore groups
                 </Link>{" "}
                 are{" "}
-                <Link href="https://zkkit.pse.dev/classes/_zk_kit_imt.LeanIMT.html" isExternal>
+                <Link href="https://zkkit.pse.dev/modules/_zk_kit_lean_imt.html" isExternal>
                     Lean incremental Merkle trees
                 </Link>{" "}
                 in which each leaf contains an identity commitment for a user. Groups can be abstracted to represent
@@ -135,7 +135,7 @@ export default function GroupsPage() {
                     {users.map((user, i) => (
                         <HStack key={i} pb="3" borderBottomWidth={i < _users.length - 1 ? 1 : 0} whiteSpace="nowrap">
                             <Text textOverflow="ellipsis" overflow="hidden">
-                                {_identity?.commitment === user ? <b>{user}</b> : user}
+                                {_identity?.commitment.toString() === user ? <b>{user}</b> : user}
                             </Text>
                         </HStack>
                     ))}
